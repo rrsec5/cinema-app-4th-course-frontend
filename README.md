@@ -1,73 +1,68 @@
-# React + TypeScript + Vite
+# 🎬 Cinema Management System (Frontend)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A comprehensive professional dashboard designed to automate cinema operations, including repertoire management, session scheduling, ticket booking, and payment processing in a distributed microservice environment.
 
-Currently, two official plugins are available:
+## 🚀 Key Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### 🎞️ Movie & Session Management
 
-## React Compiler
+- **Movie Catalog:** Searchable database of movies with detailed cards showing descriptions, genres, duration, and ratings.
+- **Session Scheduling:** Create and manage movie sessions with specific timing and pricing logic.
+- **Full CRUD:** Dedicated interfaces for creating, editing, and deleting movies and sessions.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### 🎟️ Booking System
 
-## Expanding the ESLint configuration
+- **Reservation Flow:** Book seats directly from a movie's detail page or through the specialized Bookings section.
+- **Manual Seat Selection:** Flexible text-based seat assignment (e.g., "Row 1, Seat 2").
+- **Booking Control:** A centralized table to track customer names, seat counts, and total costs.
+- **Filtering:** Advanced filtering by booking status (Pending, Confirmed, Cancelled).
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### 💳 Payment & Refund Integration
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- **Automated Billing:** Create payments for "Confirmed" bookings with automatic price synchronization.
+- **Payment Methods:** Support for multiple payment methods.
+- **Refund Logic:** Built-in "Refund" functionality, available for sessions that have not yet concluded.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## 🛠️ Tech Stack
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- **Framework:** React with TypeScript (Vite)
+- **Styling:** Tailwind CSS (Responsive and consistent UI)
+- **Data Fetching:** Axios (Integration with microservice API)
+- **Form Management:** `react-hook-form` (Efficient validation and state handling)
+- **Routing:** `react-router-dom` (Modular navigation between movies, bookings, and payments)
+- **Icons:** `react-icons`
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 📸 System Preview
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+| Movie Catalog                       | Search Movie                                  | Create Movie                                  |
+| :---------------------------------- | :-------------------------------------------- | :-------------------------------------------- |
+| ![Catalog](screenshots/Catalog.png) | ![Search Movie](screenshots/Search_Movie.png) | ![Create Movie](screenshots/Create_Movie.png) |
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+| Movie Detail Page                                       | Edit Movie                                | Create Session                                    | Create Booking from Session                                            | Edit Session                                  |
+| :------------------------------------------------------ | :---------------------------------------- | :------------------------------------------------ | :--------------------------------------------------------------------- | :-------------------------------------------- |
+| ![Movie Detail Page](screenshots/Movie_Detail_Page.png) | ![Edit Movie](screenshots/Edit_Movie.png) | ![Create Session](screenshots/Create_Session.png) | ![Create Booking from Session](screenshots/Create_Booking_Session.png) | ![Edit Session](screenshots/Edit_Session.png) |
+
+| Booking List                                  | Booking filtered by status                                      | Create Booking                                    | Booking Detail Page                               | Edit Booking                                  |
+| :-------------------------------------------- | :-------------------------------------------------------------- | :------------------------------------------------ | :------------------------------------------------ | :-------------------------------------------- |
+| ![Booking List](screenshots/Booking_List.png) | ![Booking filtered by status](screenshots/Booking_filtered.png) | ![Create Booking](screenshots/Create_Booking.png) | ![Booking Detail](screenshots/Booking_Detail.png) | ![Edit Booking](screenshots/Edit_Booking.png) |
+
+| Payment List                                  | Process Payment                                     |
+| :-------------------------------------------- | :-------------------------------------------------- |
+| ![Payment List](screenshots/Payment_List.png) | ![Process Payment](screenshots/Process_Payment.png) |
+
+## 🏗️ Architecture Note
+
+The frontend is designed to interact with a **distributed microservice backend**. It handles complex data relations, ensuring that payments are correctly linked to bookings, and bookings are tied to valid movie sessions.
+
+## ⚙️ Setup & Installation
+
+1. Clone the repository.
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Configure the API endpoint in your environment settings.
+4. Launch the application:
+   ```bash
+   npm run dev
+   ```
